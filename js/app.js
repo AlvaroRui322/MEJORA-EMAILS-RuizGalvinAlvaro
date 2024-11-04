@@ -150,7 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
    * Función para actualizar el contador de caracteres restantes en el campo de mensaje.
    */
   function actualizarContador() {
-    const caracteresRestantes = maxCaracteres - inputMensaje.value.length;
+    let caracteresRestantes = maxCaracteres - inputMensaje.value.length;
+
+    if (caracteresRestantes < 0) {
+      inputMensaje.value = inputMensaje.value.slice(0, maxCaracteres);
+      caracteresRestantes = 0;
+    }
+
     contador.textContent = `Quedan ${caracteresRestantes} caracteres`;
   }
 
